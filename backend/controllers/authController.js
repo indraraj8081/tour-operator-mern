@@ -86,12 +86,26 @@ exports.login = async (req, res) => {
             }
         );
 
-        res.status(200).json({
-            success: true,
-            message: "Login successful",
-            token,
-            user
-        });
+        res
+.cookie("token", token, {
+
+    httpOnly: true,
+
+    maxAge: 7 * 24 * 60 * 60 * 1000
+
+})
+.status(200)
+.json({
+
+    success: true,
+
+    message: "Login Successful",
+
+    token,
+
+    user
+
+});
 
     } catch (error) {
 
