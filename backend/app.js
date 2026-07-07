@@ -12,6 +12,9 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
 
+const authRoutes = require("./routes/authRoutes");
+app.use("/api/auth", authRoutes);
+
 app.get("/", (req, res) => {
     res.send("Tour Operator API Running...");
 });
